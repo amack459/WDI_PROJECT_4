@@ -1,0 +1,27 @@
+{
+  "name": "frontend",
+  "homepage": "https://github.com/amack459/WDI_PROJECT_4",
+  "authors": [
+    "Acacia Mack <acacialmack@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "music",
+    "production",
+    "musicians"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3"
+  }
+}
