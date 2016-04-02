@@ -1,0 +1,36 @@
+<html ng-app="studioVibes">
+<head>
+  <title>Oauth authentication</title>
+  <!-- External Modules -->
+  <script src="/js/vendor/angular/angular.min.js"></script>
+  <script src="/js/vendor/satellizer/satellizer.min.js"></script>
+  <script src="/js/vendor/angular-jwt/dist/angular-jwt.min.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Internal Modules -->
+  <script src="/js/app.js"></script>
+  <script src="/js/controllers/mainController.js"></script>
+  <script src="/js/services/oauthKeys.js"></script>
+  <script src="/js/services/token.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="MainController as main">
+  <div class="centered">
+    <div ng-hide="main.isLoggedIn()">
+      <h1>Studio Vibes</h1>
+      <hr>
+      <button class="soundcloud" ng-click="main.authenticate('soundcloud')"><i class="fa fa-soundcloud"></i> Sign in with SoundCloud</button>
+    </div>
+
+    <div ng-show="main.isLoggedIn()">
+      <img ng-src="{{ main.currentUser.picture }}">
+      <h2>{{ main.currentUser.name }}</h2>
+      <hr>
+      <button class="logout" ng-click="main.logout()"><i class="fa fa-sign-out"></i> Logout</button>
+    </div>
+  </div>
+</body>
+</html>
