@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var User = require('../models/user')
-var Track = require('../models/track')
+var User = require('../models/user');
+var Track = require('../models/track');
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/studioVibes';
 mongoose.connect(mongoURI);
 
