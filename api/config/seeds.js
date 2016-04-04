@@ -57,5 +57,3 @@ User.create([{
   else console.log(users);
   mongoose.connection.close();
 });
-
-User.collection.pretty();

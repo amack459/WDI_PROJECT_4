@@ -1,3 +1,7 @@
+angular
+  .module('studioVibes')
+  .controller('UserController', UserController);
+
 var User = require('../models/user');
 
 function usersIndex(req, res) {
