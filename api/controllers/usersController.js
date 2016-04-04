@@ -8,7 +8,7 @@ function usersIndex(req, res) {
 }
 
 function usersCreate(req, res){
-  var user = req.body;
+  var user = req.body.user;
   User.create(user, function(err, user){
     if(err) return res.status(500).json({ message: err });
     if(!user) return res.status(400).json({ message: "Invalid data"});
