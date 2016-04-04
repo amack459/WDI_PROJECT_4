@@ -41,25 +41,27 @@ function soundcloud(req, res) {
     var profile = responses[0];
     var tracks = responses[1];
 
-    console.log(tracks);
+    // console.log(tracks);
 
       // step 3, we try to find a user in our database by their user id
     return User.findOne({ soundcloudId: profile.id })
       .then(function(user) {
       // if a user is found, we set their soundcloudId and picture to their profile data
         if(user) {
-          user.picture = user.picture || tracks.user.avatar_url;
+          user.picture = user.picture || profile.avatar_url;
         }
         else {
         // otherwise, create a new user record with the user's profile data from soundcloud
           user = new User({
-            soundcloudId: tracks.user.id,
-            name: tracks.user.username,
-            picture: tracks.user.avatar_url
+            soundcloudId: profile.id,
+            name: profile.username,
+            picture: profile.avatar_url
           });
         }
         // either way, save the user record
         return user.save();
+
+        console.log(user);
       });
   })
   .then(function(user) {
