@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-var User = require('../models/user');
-var Track = require('../models/track');
-var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/studioVibes';
-mongoose.connect(mongoURI);
+var User = require('../models/User');
+var Track = require('../models/Track');
+var config = require('./app');
+mongoose.connect(app.databaseUrl);
 
 User.collection.drop();
 User.create([{

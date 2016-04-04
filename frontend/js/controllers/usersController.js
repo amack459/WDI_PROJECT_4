@@ -17,14 +17,14 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
 
 
 
-     var User = $resource(API_URL, { id: '@_id'});
+     var User = $resource(API_URL + '/users', { id: '@_id'});
 
      var self = this;
      this.newUser = {};
 
-     this.users   = User.query();
+     this.all = User.query();
 
-     this.addUser       = function(user) {
+     this.addUser = function(user) {
       User.save(this.newUser).$promise.then(function() {
         self.users.push(this.newUser);
         console.log(users)
