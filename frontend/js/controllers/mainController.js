@@ -17,9 +17,6 @@ function MainController($auth, tokenService, $scope, $resource, API_URL) {
   this.authenticate = function(provider) {
     $auth.authenticate(provider)
       .then(function() {
-        // var Soundcloud = $resource(API_URL + '/auth/soundcloud', {id: '@id'})
-        //REQUIRES CODE FROM SOUNDCLOUD
-        // Soundcloud.save();
         self.currentUser = tokenService.getUser();
         console.log(self.currentUser)
       });

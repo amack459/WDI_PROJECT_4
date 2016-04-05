@@ -29,6 +29,7 @@
   height: 220px;
   -webkit-user-drag: none;
   cursor: pointer;
+  z-index: 100;
 }
 
 .tinder img {

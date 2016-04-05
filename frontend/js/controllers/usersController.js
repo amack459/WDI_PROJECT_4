@@ -29,19 +29,19 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
 
     this.all = User.query();
 
-    this.swipeRight = function(element) {
-      console.log("Done");
+    this.swipeRight = function(user) {
+      console.log('hello');
       // stopAudio();
-      // element.swiped = "fadeOutRightBig";
-      // this.currentIndex++;
+      user.swiped = "fadeOutRightBig";
+      this.currentIndex++;
       // playAudio();
     };
 
-    this.swipeLeft = function(element) {
-      console.log("Done");
+    this.swipeLeft = function(user) {
+      console.log('hello');
       // stopAudio();
-      // element.swiped = "fadeOutLeftBig";
-      // this.currentIndex++;
+      user.swiped = "fadeOutLeftBig";
+      this.currentIndex++;
       // playAudio();
     };
 
@@ -70,7 +70,6 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
         player.pause();
         player.currentTime = 0;
       }
-
       // this.setCurrentUserIndex = function (index) {
       //   this.currentIndex = index;
       // };

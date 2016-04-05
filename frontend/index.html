@@ -8,7 +8,7 @@
   <script src="/js/vendor/satellizer/satellizer.min.js"></script>
   <script src="/js/vendor/angular-jwt/dist/angular-jwt.min.js"></script>
 
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -21,6 +21,7 @@
   <script src="/js/services/token.js"></script>
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/js/vendor/animate.css/animate.min.css">
 </head>
 <body ng-controller="MainController as main">
   <div class="centered">
@@ -36,10 +37,10 @@
     </div>
   </div>
 
-<div ng-controller="UsersController as user">
+<div ng-controller="UsersController as users">
   <div class="tinder">
     <ul>
-      <li class="animated" ng-repeat="user in user.all" ng-swipe-right="user.swipeRight(user)" ng-swipe-left="user.swipeLeft(user)">
+      <li class="animated" ng-class="user.swiped" ng-repeat="user in users.all" ng-swipe-right="users.swipeRight(user)" ng-swipe-left="users.swipeLeft(user)">
         <img ng-src="{{ user.picture }}">
       </li>
     </ul>

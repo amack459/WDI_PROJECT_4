@@ -2,7 +2,11 @@ var mongoose = require('mongoose')
 
 var userSchema = mongoose.Schema({
   username: String,
-  tracks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Track' }],
+  tracks: [{  title: String,
+    id: String,
+    genre: String,
+    artwork_url: String,
+    duration: String }],
   matches: [],
   likes: [],
   website: String,

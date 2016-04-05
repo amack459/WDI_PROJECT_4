@@ -48,7 +48,7 @@ User.create([{
   soundcloudId:"15305282",
   username: "ZaytovenBeatz",
   swiped: false,
-  picture: "https://i1.sndcdn.com/avatars-000169539954-xg1x6r-t200x200.jpg"
+  picture: "https://i1.sndcdn.com/avatars-000199982851-ycw1r6-t200x200.jpg"
 
 },{
   soundcloudId:"6969243",

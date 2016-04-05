@@ -22,31 +22,20 @@ function soundcloud(req, res) {
   })
   // step 2, we use the access token to get the user's profile data from soundcloud's api
   .then(function(response) {
-    var requests = [
-      request.get({
-        url: oauth.soundcloud.profileUrl,
-        qs: { oauth_token: response.access_token },
-        json: true
-      }),
-      request.get({
-        url: oauth.soundcloud.profileUrl + '/tracks',
-        qs: { oauth_token: response.access_token },
-        json: true
-      })
-    ];
-
-    return Promise.all(requests);
+    return request.get({
+      url: oauth.soundcloud.profileUrl + '/tracks',
+      qs: { oauth_token: response.access_token },
+      json: true
+    })
   })
-  .then(function(responses) {
-    var profile = responses[0];
-    var tracks = responses[1];
+  .then(function(response) {
+    console.log(response[0].user.id);
+    var profile = response[0].user
 
-    // console.log(tracks);
-
-      // step 3, we try to find a user in our database by their user id
+      // step 3, try to find a user in our database by their user id
     return User.findOne({ soundcloudId: profile.id })
       .then(function(user) {
-      // if a user is found, we set their soundcloudId and picture to their profile data
+      // if a user is found, set their soundcloudId and picture to their profile data
         if(user) {
           user.picture = user.picture || profile.avatar_url;
         }
@@ -56,7 +45,10 @@ function soundcloud(req, res) {
             soundcloudId: profile.id,
             username: profile.username,
             picture: profile.avatar_url
+            // tracks: profile.track.id
+            // trackIds: // get the track ids
           });
+
         }
         // either way, save the user record
         return user.save();
@@ -72,6 +64,7 @@ function soundcloud(req, res) {
   })
   .catch(function(err) {
     // handle any errors here
+    console.log(err);
     return res.status(500).send();
   });
 }

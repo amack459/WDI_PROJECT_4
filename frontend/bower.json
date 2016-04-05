@@ -25,6 +25,7 @@
     "angular": "^1.5.3",
     "angular-jwt": "^0.0.9",
     "satellizer": "^0.14.0",
-    "angular-touch": "^1.5.3"
+    "angular-touch": "^1.5.3",
+    "animate.css": "^3.5.1"
   }
 }
