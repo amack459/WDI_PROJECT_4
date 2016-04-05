@@ -46,8 +46,9 @@ function soundcloud(req, res) {
             soundcloudId: profile.id,
             username: profile.username,
             picture: profile.avatar_url,
+            // get the track ids
             tracks: track.id
-            // trackIds: // get the track ids
+
           });
 
         }
