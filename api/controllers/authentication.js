@@ -54,7 +54,7 @@ function soundcloud(req, res) {
         // otherwise, create a new user record with the user's profile data from soundcloud
           user = new User({
             soundcloudId: profile.id,
-            name: profile.username,
+            username: profile.username,
             picture: profile.avatar_url
           });
         }
@@ -66,7 +66,7 @@ function soundcloud(req, res) {
   })
   .then(function(user) {
     // create a JWT and send it back to StudioVibes
-    var payload = { _id: user._id, name: user.name, picture: user.picture };
+    var payload = { _id: user._id, name: user.name, picture: user.picture, soundcloudId: user.soundcloudId };
     var token = jwt.sign(payload, config.secret, { expiresIn: '24h' });
     return res.send({ token: token, user: payload });
   })

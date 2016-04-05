@@ -1,11 +1,19 @@
 angular
   .module('studioVibes')
-  .controller('UsersController', UsersController);
+  .controller('UsersController', UsersController)
+  .config(SecureURL);
+
+  SecureURL.$inject = ['$sceDelegateProvider', 'SOUNDCLOUD_API_URL'];
+function SecureURL($sceDelegateProvider, SOUNDCLOUD_API_URL) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    SOUNDCLOUD_API_URL + '/**'
+  ]);
+}
 
 
 UsersController.$inject = ['$window', '$timeout', 'SOUNDCLOUD_API_URL', 'SOUNDCLOUD_API_KEY','$resource', 'API_URL'];
 function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_KEY,$resource, API_URL) {
-
 
     // Built in options since it's pulling from the RESTful server side
     //   get: {method: 'GET'},
@@ -14,19 +22,33 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
     //   remove: {method: 'DELETE'},
     //   delete: {method: 'DELETE'}
 
+    var User = $resource(API_URL + '/users', { id: '@_id'});
 
+    var self = this;
+    this.newUser = {};
 
+    this.all = User.query();
 
-     var User = $resource(API_URL + '/users', { id: '@_id'});
+    this.swipeRight = function(element) {
+      console.log("Done");
+      // stopAudio();
+      // element.swiped = "fadeOutRightBig";
+      // this.currentIndex++;
+      // playAudio();
+    };
 
-     var self = this;
-     this.newUser = {};
+    this.swipeLeft = function(element) {
+      console.log("Done");
+      // stopAudio();
+      // element.swiped = "fadeOutLeftBig";
+      // this.currentIndex++;
+      // playAudio();
+    };
 
-     this.all = User.query();
-
-     this.addUser = function(user) {
+    this.addUser = function(user) {
       User.save(this.newUser).$promise.then(function() {
         self.users.push(this.newUser);
+        self.user.swiped = false;
         console.log(users)
 
         var player = new $window.Audio();
@@ -36,7 +58,7 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
       playAudio();
 
       function playAudio() {
-        player.src = self.slides[self.currentIndex].audio;
+        player.src = self.users[self.currentIndex].audio;
 
         t = $timeout(function() {
           stopAudio();
@@ -49,13 +71,13 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
         player.currentTime = 0;
       }
 
-      this.setCurrentSlideIndex = function (index) {
-        this.currentIndex = index;
-      };
-
-      this.isCurrentSlideIndex = function (index) {
-        return this.currentIndex === index;
-      };
+      // this.setCurrentUserIndex = function (index) {
+      //   this.currentIndex = index;
+      // };
+      //
+      // this.isCurrentUserIndex = function (index) {
+      //   return this.currentIndex === index;
+      // };
 
       // this.prevSlide = function () {
       //   this.currentIndex = (this.currentIndex < this.slides.length - 1) ? ++this.currentIndex : 0;
@@ -64,20 +86,6 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
       // this.nextSlide = function () {
       //   this.currentIndex = (this.currentIndex > 0) ? --this.currentIndex : this.slides.length - 1;
       // };
-
-      this.swipeRight = function(element) {
-        stopAudio();
-        element.swiped = "fadeOutRightBig";
-        this.currentIndex++;
-        playAudio();
-      };
-
-      this.swipeLeft = function(element) {
-        stopAudio();
-        element.swiped = "fadeOutLeftBig";
-        this.currentIndex++;
-        playAudio();
-      };
     });
   }
 };

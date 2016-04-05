@@ -10,6 +10,8 @@
 
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 
   <!-- Internal Modules -->
   <script src="/js/app.js"></script>
@@ -29,18 +31,19 @@
 
     <div ng-show="main.isLoggedIn()">
       <img ng-src="{{ main.currentUser.picture }}">
-      <h2>{{ main.currentUser.name }}</h2>
+      <!-- <h2>{{ main.currentUser.username }}</h2> -->
       <button class="logout" ng-click="main.logout()"><i class="fa fa-sign-out"></i> Logout</button>
     </div>
   </div>
 
 <div ng-controller="UsersController as user">
-  <div class="centered">
+  <div class="tinder">
     <ul>
-      <li class="animated" ng-class="user.swiped" ng-repeat="user in user.all track by $index" ng-swipe-right="swipe.swipeRight(user)" ng-swipe-left="swipe.swipeLeft(user)" >
+      <li class="animated" ng-repeat="user in user.all" ng-swipe-right="user.swipeRight(user)" ng-swipe-left="user.swipeLeft(user)">
         <img ng-src="{{ user.picture }}">
       </li>
     </ul>
   </div>
+</div>
 </body>
 </html>

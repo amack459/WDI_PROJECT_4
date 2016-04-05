@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
 
 var trackSchema = mongoose.Schema({
-  name: String,
-  user: String,
+  title: String,
+  user_id: String,
   genre: String,
   artwork_url: String,
   length: String

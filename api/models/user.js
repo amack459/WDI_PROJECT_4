@@ -7,6 +7,7 @@ var userSchema = mongoose.Schema({
   likes: [],
   website: String,
   picture: String,
+  swiped: Boolean,
   soundcloudId: String
 });
 
