@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var User = require('../models/User');
-var Track = require('../models/Track');
 var config = require('./app');
 mongoose.connect(config.databaseUrl);
 

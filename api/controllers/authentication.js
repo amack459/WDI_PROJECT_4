@@ -29,7 +29,8 @@ function soundcloud(req, res) {
     })
   })
   .then(function(response) {
-    console.log(response[0].user.id);
+    console.log(response[0].id);
+    var track = response[0]
     var profile = response[0].user
 
       // step 3, try to find a user in our database by their user id
@@ -44,8 +45,8 @@ function soundcloud(req, res) {
           user = new User({
             soundcloudId: profile.id,
             username: profile.username,
-            picture: profile.avatar_url
-            // tracks: profile.track.id
+            picture: profile.avatar_url,
+            tracks: track.id
             // trackIds: // get the track ids
           });
 
