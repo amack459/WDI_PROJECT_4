@@ -24,7 +24,7 @@
 
 .tinder li {
   position: absolute;
-  background: blue;
+  /*background: blue;*/
   width: 220px;
   height: 220px;
   -webkit-user-drag: none;

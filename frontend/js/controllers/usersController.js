@@ -12,8 +12,8 @@ function SecureURL($sceDelegateProvider, SOUNDCLOUD_API_URL) {
 }
 
 
-UsersController.$inject = ['$window', '$timeout', 'SOUNDCLOUD_API_URL', 'SOUNDCLOUD_API_KEY','$resource', 'API_URL'];
-function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_KEY,$resource, API_URL) {
+UsersController.$inject = ['$window', '$timeout','$resource', 'API_URL'];
+function UsersController($window, $timeout, $resource, API_URL) {
 
     // Built in options since it's pulling from the RESTful server side
     //   get: {method: 'GET'},
@@ -26,23 +26,38 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
 
     var self = this;
     this.newUser = {};
+    this.currentIndex = 0;
 
     this.all = User.query();
 
+    function stopAudio() {
+      $timeout.cancel(t);
+      player.pause();
+      player.currentTime = 0;
+    }
+
+    function playAudio() {
+
+      console.log(self.all[self.currentIndex].tracks.length)
+      //
+      // player.src = self.users[self.currentIndex].tracks;
+      // t = $timeout(function() {
+      //   stopAudio();
+      // }, 10 * 1000);
+    }
+
     this.swipeRight = function(user) {
-      console.log('hello');
       // stopAudio();
       user.swiped = "fadeOutRightBig";
       this.currentIndex++;
-      // playAudio();
+      playAudio();
     };
 
     this.swipeLeft = function(user) {
-      console.log('hello');
       // stopAudio();
       user.swiped = "fadeOutLeftBig";
       this.currentIndex++;
-      // playAudio();
+      playAudio();
     };
 
     this.addUser = function(user) {
@@ -57,19 +72,6 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
 
       playAudio();
 
-      function playAudio() {
-        player.src = self.users[self.currentIndex].audio;
-
-        t = $timeout(function() {
-          stopAudio();
-        }, 10 * 1000);
-      }
-
-      function stopAudio() {
-        $timeout.cancel(t);
-        player.pause();
-        player.currentTime = 0;
-      }
       // this.setCurrentUserIndex = function (index) {
       //   this.currentIndex = index;
       // };
@@ -86,5 +88,5 @@ function UsersController($window, $timeout, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_K
       //   this.currentIndex = (this.currentIndex > 0) ? --this.currentIndex : this.slides.length - 1;
       // };
     });
-  }
+  };
 };
