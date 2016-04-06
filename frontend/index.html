@@ -41,7 +41,9 @@
   <div class="tinder">
     <ul>
       <li class="animated" ng-class="user.swiped" ng-repeat="user in users.all" ng-swipe-right="users.swipeRight(user)" ng-swipe-left="users.swipeLeft(user)">
+
         <img ng-src="{{ user.picture }}">
+        <h1>{{ user.username }}</h1>
       </li>
     </ul>
   </div>

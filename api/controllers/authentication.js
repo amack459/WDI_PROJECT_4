@@ -29,9 +29,12 @@ function soundcloud(req, res) {
     })
   })
   .then(function(response) {
-    console.log(response[0].id);
     var track = response[0]
     var profile = response[0].user
+
+    var trackIds = response.map(function(track) {
+      return track.id;
+    });
 
       // step 3, try to find a user in our database by their user id
     return User.findOne({ soundcloudId: profile.id })
@@ -47,8 +50,7 @@ function soundcloud(req, res) {
             username: profile.username,
             picture: profile.avatar_url,
             // trackIds: // get the track ids
-            tracks: [{id: track.id}]
-
+            tracks: trackIds
           });
 
         }
@@ -56,6 +58,7 @@ function soundcloud(req, res) {
         return user.save();
 
         console.log(user);
+        console.log(user.likes);
       });
   })
   .then(function(user) {

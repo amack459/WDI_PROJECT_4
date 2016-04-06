@@ -22,10 +22,12 @@ function usersCreate(request, response) {
 
 // PUT
 function usersUpdate(request, response) {
-
-  User.findByIdAndUpdate(request.params.id, { new: true }, function(user, error) {
-    if(error) response.status(500).json(error);
-    response.status(200).json(user);
+  User.findOne({soundcloudId: request.params.id}, function(error, user) {
+    if(error) return response.status(500).json(error) && console.log(error);
+    console.log(request.body);
+    // user.likes.push(user.likes);
+    // console.log(user.likes);
+    return response.status(200).json(user);
   });
 }
 
