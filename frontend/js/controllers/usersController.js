@@ -23,9 +23,12 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
   var self = this;
   this.newUser = {};
   this.currentIndex = 0;
+
   // this.currentUser =
 
-  this.all = User.query();
+  this.all = User.query(function(users) {
+    playAudio;
+  });
   this.likes = [];
 
   function stopAudio() {
@@ -35,12 +38,11 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
   }
 
   function playAudio() {
-
-    var trackSRCs = self.all[self.currentIndex].tracks.map(function(id) {
-      console.log(self.all[self.currentIndex]._id)
+    var index = (self.all.length - self.currentIndex-1)
+    var trackSRCs = self.all[index].tracks.map(function(id) {
+      console.log(self.all[index]);
       return SOUNDCLOUD_API_URL + '/tracks/' + id + '/stream?client_id=' + SOUNDCLOUD_API_KEY
     });
-
     player.src = trackSRCs[0];
     t = $timeout(function() {
       stopAudio();
@@ -49,18 +51,12 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
 
   this.swipeRight = function(user) {
     stopAudio();
-    console.log(user);
     var userId = self.all[self.currentIndex]._id;
     user.swiped = "fadeOutRightBig";
     this.likes.push(userId);
-    console.log(this.likes)
-    user.id = userId;
     this.currentIndex++;
     playAudio();
-    User.update({id: user._id}, this.likes, function(user) {
-      this.likes = user.likes;
-    })
-    // this.likes = User.save(user.likes.push(self.all[self.currentIndex]._id));
+    // updateUser(user);
   };
 
   this.swipeLeft = function(user) {
