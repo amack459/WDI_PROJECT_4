@@ -51,12 +51,15 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
 
   this.swipeRight = function(user) {
     stopAudio();
-    var userId = self.all[self.currentIndex]._id;
+    var index = (self.all.length - self.currentIndex-1)
+
+    var userId = self.all[index].soundcloudId;
     user.swiped = "fadeOutRightBig";
     this.likes.push(userId);
+    console.log(this.likes);
     this.currentIndex++;
     playAudio();
-    // updateUser(user);
+    // this.updateUser(userId);
   };
 
   this.swipeLeft = function(user) {
