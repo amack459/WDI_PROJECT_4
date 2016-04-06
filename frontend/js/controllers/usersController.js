@@ -53,13 +53,13 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
     stopAudio();
     var index = (self.all.length - self.currentIndex-1)
 
-    var userId = self.all[index].soundcloudId;
+    var userId = self.all[index]._id;
     user.swiped = "fadeOutRightBig";
     this.likes.push(userId);
     console.log(this.likes);
     this.currentIndex++;
     playAudio();
-    // this.updateUser(userId);
+    this.updateUser(userId);
   };
 
   this.swipeLeft = function(user) {
@@ -73,7 +73,13 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
     User.save(this.newUser).$promise.then(function() {
       self.users.unshift(this.newUser);
       self.user.swiped = false;
-
     });
   };
+
+  this.updateUser = function(id) {
+    User.update({id: id}, {likes: this.likes}, function(user) {
+      console.log(user);
+      console.log("+++++++++++++++++++++++++++++++++++++");
+    })
+  }
 };
