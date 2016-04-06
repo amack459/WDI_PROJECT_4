@@ -22,13 +22,20 @@ function usersCreate(request, response) {
 
 // PUT
 function usersUpdate(request, response) {
+  User.findById(request.params.id, function(err, user) {
+    if(err) response.status(500).json(err);
 
-  User.findById(request.params.id, function(error, user) {
-    if(error) return response.status(500).json(error) && console.log(error);
+    user.username = request.body.username;
+    user.tracks = request.body.tracks;
     user.likes = request.body.likes;
-    user.save();
-    console.log("User saved:" + user)
-    return response.status(200).json(user);
+    user.website = request.body.website;
+    user.picture = request.body.picture;
+    user.soundcloudId = request.body.soundcloudId;
+
+    user.save(function(err, user) {
+      if(err) response.status(500).json(err);
+      response.status(200).json(user);
+    });
   });
 }
 
