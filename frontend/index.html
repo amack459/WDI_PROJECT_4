@@ -30,23 +30,23 @@
       <button class="soundcloud" ng-click="main.authenticate('soundcloud')"><i class="fa fa-soundcloud"></i> Sign in with SoundCloud</button>
     </div>
 
-    <div ng-show="main.isLoggedIn()">
-      <img ng-src="{{ main.currentUser.picture }}">
+    <!-- <div ng-show="main.isLoggedIn()">
+      <img ng-src="{{ main.currentUser.picture }}"> -->
       <!-- <h2>{{ main.currentUser.username }}</h2> -->
-      <button class="logout" ng-click="main.logout()"><i class="fa fa-sign-out"></i> Logout</button>
+      <!-- <button class="logout" ng-click="main.logout()"><i class="fa fa-sign-out"></i> Logout</button>
     </div>
-  </div>
+  </div> -->
 
-<div ng-controller="UsersController as users">
-  <div class="tinder">
+<!-- <div ng-controller="UsersController as users">
+  <div class="tinder" class="card">
     <ul>
       <li class="animated" ng-class="user.swiped" ng-repeat="user in users.all" ng-swipe-right="users.swipeRight(user)" ng-swipe-left="users.swipeLeft(user)">
-
-        <img ng-src="{{ user.picture }}">
-        <h1>{{ user.username }}</h1>
-      </li>
+          <img class="card-img-top" ng-src="{{ user.picture }}" alt="Card image cap">
+   -->
+        <!-- <h1>{{ user.username }}</h1> -->
+      <!-- </li>
     </ul>
   </div>
-</div>
+</div> -->
 </body>
 </html>

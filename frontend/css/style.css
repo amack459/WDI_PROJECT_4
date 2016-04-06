@@ -2,6 +2,56 @@
   background: #f5f5f5;
 }*/
 
+button {
+  border: 0;
+  background: none;
+  width: 198px;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: -0.5px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400; }
+  button.soundcloud {
+    margin-top: 45px;
+    background: #FF7700;
+    height: 60px;
+    border: 1px solid #3e578c; }
+    button.soundcloud:hover {
+      background: #415b93; }
+
+.centered {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 350px;
+  height: 400px;
+  border-radius: 3px;
+}
+
+h1 {
+  margin-top: 42px;
+  font-size: 55px;
+  font-weight: 400;
+  letter-spacing: -2px;
+}
+
+
+body {
+  margin: 0 auto;
+  text-align: center;
+  background: #f5f5f5;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: -0.5px;
+  color: #333;
+}
+
 .tinder {
   position: absolute;
   left: 50%;
