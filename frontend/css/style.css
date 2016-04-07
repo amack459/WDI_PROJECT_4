@@ -124,9 +124,17 @@ section{
 .vibes img {
   width: 255px;
   height: 230px;
-  /*-webkit-user-drag: none;*/
+  -webkit-user-drag: none;
 }
 
-h4 {
+.vibes h3 {
   background: #CCE8E7;
+  color: #63A2A0;
+  margin: 10px;
+  height: 60px;
+}
+
+.profile {
+  background: #CCE8E7;
+  height: 100vh;
 }

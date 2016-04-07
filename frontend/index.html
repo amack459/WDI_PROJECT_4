@@ -37,26 +37,30 @@
 <div ng-controller="UsersController as users">
   <div ng-show="main.isLoggedIn()">
     <nav class="navbar navbar-inverse">
-      <img ng-src="{{ main.currentUser.picture }}"  ng-hide="users.profileIsShowing" ng-click='users.showProfile(main.currentUser)'>
+      <img ng-src="{{ main.currentUser.picture }}"  ng-click='users.showProfile(main.currentUser)'>
       <button class="logout" ng-click="main.logout(); users.profileIsShowing = false"><i class="fa fa-sign-out fa-lg"></i> </button>
       <!-- <a ng-click='users.showProfile(main.currentUser)'>profile</a> -->
       <a ng-click='users.profileIsShowing = false'>Studio Vibes</a>
     </nav>
   </div>
 
-<section class="vibes" ng-hide="users.profileIsShowing; !main.isLoggedIn()">
-  <div class="vibes" class="card">
+  <!-- ng-hide="users.profileIsShowing" ng-click='users.showProfile(main.currentUser)' -->
+
+<section class="vibes" ng-hide="users.profileIsShowing" ng-show="main.isLoggedIn()">
+  <div class="vibes">
     <ul>
       <li class="animated" ng-class="user.swiped" ng-repeat="user in users.all" ng-swipe-right="users.swipeRight(user)" ng-swipe-left="users.swipeLeft(user)">
-        <img class="card-img-top" ng-src="{{ user.picture }}" alt="Card image cap">
-        <h4>{{ user.username }}</h4>
+        <img ng-src="{{ user.picture }}">
+        <h3>{{ user.username }}</h3>
+        <button name="no"><i class="fa fa-times"></i></button>
+        <button name="yes"><i class="fa fa-check fa-lg"></i></button>
       </li>
     </ul>
   </div>
 </section>
 
 
-  <div class="profile" ng-if="users.profileIsShowing">
+  <div class="profile" ng-show="users.profileIsShowing">
     <h1>PROFILE</h1>
     <img ng-src="{{ main.currentUser.picture }}">
     <ul>

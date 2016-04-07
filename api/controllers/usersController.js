@@ -20,6 +20,7 @@ function usersCreate(request, response) {
 
 // PUT
 function usersUpdate(request, response) {
+  console.log("getting here");
   User.findById(request.params.id, function(err, user) {
     if(err) response.status(500).json(err);
 

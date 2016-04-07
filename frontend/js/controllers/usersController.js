@@ -23,9 +23,15 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
   var self = this;
   // this.newUser = {};
   this.currentIndex = 0;
+
+  // User.get({ id: tokenService.getUser()._id}, function(user) {
+  //   self.loggedInUser = user;
+  // });
+
   if (!!tokenService.getUser()) {
-    this.loggedInUser = User.get({ id: tokenService.getUser()._id });
+    self.loggedInUser = User.get({ id: tokenService.getUser()._id})
   }
+
   this.matchedUsers = [];
 
   this.all = User.query(function(users) {
@@ -40,7 +46,6 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
   }
 
   function playAudio() {
-
     var index = (self.all.length - self.currentIndex-1);
 
     var trackSRCs = self.all[index].tracks.map(function(id) {
@@ -57,18 +62,17 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
     stopAudio();
     var index   = (self.all.length - self.currentIndex-1);
     var userId  = self.all[index]._id;
-
     user.swiped = "fadeOutRightBig";
-    console.log(self.loggedInUser);
-    self.loggedInUser.likes.push(userId);
 
-    User.update({ id: self.loggedInUser._id }, self.loggedInUser, function(user) {
-      console.log(user);
-    });
-
+    self.loggedInUser = User.get({ id: tokenService.getUser()._id})
+    self.loggedInUser.$promise.then(function(user) {
+      user.likes.push(userId);
+      User.update({ id: user._id }, user, function(user) {
+        console.log(user);
+      });
+    })
     self.currentIndex++;
     playAudio();
-
   };
 
   this.swipeLeft = function(user) {
@@ -82,6 +86,7 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
   this.profileUser = {};
 
   this.showProfile = function(user) {
+    console.log(user);
     this.profileIsShowing = true;
     User.get({id: user._id}, function(user) {
       this.profileUser = user;
