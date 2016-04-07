@@ -40,11 +40,12 @@
       <img ng-src="{{ main.currentUser.picture }}"  ng-hide="users.profileIsShowing" ng-click='users.showProfile(main.currentUser)'>
       <button class="logout" ng-click="main.logout(); users.profileIsShowing = false"><i class="fa fa-sign-out fa-lg"></i> </button>
       <!-- <a ng-click='users.showProfile(main.currentUser)'>profile</a> -->
-      <a ng-click='users.profileIsShowing = false'>home</a>
+      <a ng-click='users.profileIsShowing = false'>Studio Vibes</a>
     </nav>
   </div>
 
-  <div class="tinder" class="card"  ng-hide="users.profileIsShowing; !main.isLoggedIn()">
+<section class="vibes" ng-hide="users.profileIsShowing; !main.isLoggedIn()">
+  <div class="vibes" class="card">
     <ul>
       <li class="animated" ng-class="user.swiped" ng-repeat="user in users.all" ng-swipe-right="users.swipeRight(user)" ng-swipe-left="users.swipeLeft(user)">
         <img class="card-img-top" ng-src="{{ user.picture }}" alt="Card image cap">
@@ -52,6 +53,8 @@
       </li>
     </ul>
   </div>
+</section>
+
 
   <div class="profile" ng-if="users.profileIsShowing">
     <h1>PROFILE</h1>
