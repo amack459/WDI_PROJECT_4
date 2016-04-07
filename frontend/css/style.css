@@ -1,56 +1,66 @@
-/*body {
-  background: #f5f5f5;
-}*/
+body {
+  background: #63A2A0;
+  color: #FFF;
 
-button {
-  border: 0;
-  background: none;
-  width: 198px;
-  margin: 5px;
-  padding: 10px 20px;
-  border-radius: 3px;
-  cursor: pointer;
-  outline: none;
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: -0.5px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400; }
-  button.soundcloud {
-    margin-top: 45px;
-    background: #FF7700;
-    height: 60px;
-    border: 1px solid #3e578c; }
-    button.soundcloud:hover {
-      background: #415b93; }
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  letter-spacing: -2px;
+
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.navbar-inverse{
+  background: #CCE8E7;
+}
 
 .centered {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
-  width: 350px;
-  height: 400px;
-  border-radius: 3px;
+  width: 415px;
+  z-index: 2;
 }
 
 h1 {
-  margin-top: 42px;
-  font-size: 55px;
-  font-weight: 400;
-  letter-spacing: -2px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 60px;
+  letter-spacing: -1.5px;
 }
 
+h3 {
+  margin-top: -10px;
+}
 
-body {
-  margin: 0 auto;
-  text-align: center;
-  background: #f5f5f5;
-  font-family: 'Roboto', sans-serif;
+button {
+  font-family: 'Arial', sans-serif;
+  border: 0;
+  background: none;
+  padding: 5px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
   letter-spacing: -0.5px;
-  color: #333;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
 }
+
+button:active {
+  -webkit-box-shadow: inset 1px -1px 75px -14px rgba(198, 93, 0.75);
+  -moz-box-shadow: inset 1px -1px 75px -14px rgba(198, 93, 0.75);
+  box-shadow: inset 1px -1px 75px -14px rgba(198, 93, 0.75);
+}
+
+button.soundcloud {
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  background: #FF7700;
+}
+
+
 
 .tinder {
   position: absolute;
