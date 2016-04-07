@@ -8,7 +8,7 @@ User.create([{
   soundcloudId:"45648088",
   username: "SonnyDigital",
   tracks: ["254876642"],
-  likes: ['57052dcd01c7b02444925825'],
+  likes: ['570687e31af41bd656d71555'],
   picture: "https://i1.sndcdn.com/avatars-000197543038-p38oj6-t200x200.jpg"
 },{
   soundcloudId:"30157446",
@@ -44,7 +44,7 @@ User.create([{
   soundcloudId:"143792979",
   username: "Gucci Mane",
   tracks: ["244077211"],
-  likes: ['57052dcd01c7b02444925825'],
+  likes: ['570687e31af41bd656d71555'],
   picture: "https://i1.sndcdn.com/avatars-000169539954-xg1x6r-t200x200.jpg"
 },{
   soundcloudId:"15305282",
@@ -56,13 +56,13 @@ User.create([{
   soundcloudId:"6969243",
   username: "'Chance The Rapper'",
   tracks: ["237314506"],
-  likes: ['57052dcd01c7b02444925825'],
+  likes: ['570687e31af41bd656d71555'],
   picture: "https://i1.sndcdn.com/avatars-000035176561-rg0orz-t200x200.jpg"
 },{
   soundcloudId:"2094414",
   username: "Towkio",
   tracks: ["250073113"],
-  likes: ['57052dcd01c7b02444925825'],
+  likes: ['570687e31af41bd656d71555'],
   picture: "https://i1.sndcdn.com/avatars-000210120185-irryjo-t200x200.jpg"
 }], function(err, users){
   if(err) console.error(err);

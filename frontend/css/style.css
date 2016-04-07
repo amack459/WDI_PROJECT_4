@@ -49,6 +49,7 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 60px;
   letter-spacing: -1.5px;
+  margin-top: 0px;
 }
 
 h3 {
@@ -101,11 +102,12 @@ section{
 .vibes ul {
   margin: 0;
   padding: 0;
-  width: 258px;
+  width: 259px;
   height: 400px;
+  border-radius: 10px;
   /*overflow: hidden;*/
   position: relative;
-  border: 2px solid #f5f5f5;
+  border: 2px solid #333;
   margin-top: 0;
   background: #CCE8E7;
   list-style: none;
@@ -121,7 +123,16 @@ section{
   z-index: 100;
 }
 
+.fa-heart{
+  color: red;
+}
+
+.fa-trash-o{
+  color: brown;
+}
+
 .vibes img {
+  border-radius: 10px 10px 0px 0px;
   width: 255px;
   height: 230px;
   -webkit-user-drag: none;
