@@ -44,7 +44,7 @@
     </nav>
   </div>
 
-  <div class="tinder" class="card"  ng-hide="users.profileIsShowing">
+  <div class="tinder" class="card"  ng-hide="users.profileIsShowing; !main.isLoggedIn()">
     <ul>
       <li class="animated" ng-class="user.swiped" ng-repeat="user in users.all" ng-swipe-right="users.swipeRight(user)" ng-swipe-left="users.swipeLeft(user)">
         <img class="card-img-top" ng-src="{{ user.picture }}" alt="Card image cap">
