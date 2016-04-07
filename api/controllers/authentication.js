@@ -31,7 +31,7 @@ function soundcloud(req, res) {
   .then(function(response) {
     var track = response[0]
     var profile = response[0].user;
-    console.log(profile);
+    console.log(response);
     var trackIds = response.map(function(track) {
       return track.id;
     });

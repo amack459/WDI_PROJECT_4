@@ -37,9 +37,10 @@
 <div ng-controller="UsersController as users">
   <div ng-show="main.isLoggedIn()">
     <nav class="navbar navbar-inverse">
-      <img ng-src="{{ main.currentUser.picture }}"  ng-hide="users.profileIsShowing">
-      <button class="logout" ng-click="main.logout()"><i class="fa fa-sign-out fa-lg"></i> </button>
-      <a ng-click='users.showProfile(main.currentUser)'>profile</a>
+      <img ng-src="{{ main.currentUser.picture }}"  ng-hide="users.profileIsShowing" ng-click='users.showProfile(main.currentUser)'>
+      <button class="logout" ng-click="main.logout(); users.profileIsShowing = false"><i class="fa fa-sign-out fa-lg"></i> </button>
+      <!-- <a ng-click='users.showProfile(main.currentUser)'>profile</a> -->
+      <a ng-click='users.profileIsShowing = false'>home</a>
     </nav>
   </div>
 
@@ -47,7 +48,7 @@
     <ul>
       <li class="animated" ng-class="user.swiped" ng-repeat="user in users.all" ng-swipe-right="users.swipeRight(user)" ng-swipe-left="users.swipeLeft(user)">
         <img class="card-img-top" ng-src="{{ user.picture }}" alt="Card image cap">
-        <h5>{{ user.username }}</h5>
+        <h4>{{ user.username }}</h4>
       </li>
     </ul>
   </div>
@@ -56,7 +57,7 @@
     <h1>PROFILE</h1>
     <img ng-src="{{ main.currentUser.picture }}">
     <ul>
-      <li ng-repeat="match in users.matchedUsers">{{match}} </li>
+      <li ng-repeat="match in users.matchedUsers" ng-click="users.showMatch(match)">{{match.image}} </li>
     </ul>
   </div>
 </div>
