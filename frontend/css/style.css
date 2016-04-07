@@ -11,6 +11,26 @@ body {
 }
 .navbar-inverse{
   background: #CCE8E7;
+  border: none;
+  position: relative;
+  min-height: 80;
+  margin-bottom: 0px;
+}
+.navbar-inverse img{
+  margin-top: 0px;
+  max-width: 60px;
+  border-radius: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px 10px;
+}
+
+.navbar-inverse .fa-sign-out{
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  margin: 10px 10px;
 }
 
 .centered {
