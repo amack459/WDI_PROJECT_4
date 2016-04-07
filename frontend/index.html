@@ -32,24 +32,31 @@
       <button class="soundcloud" ng-click="main.authenticate('soundcloud')"><i class="fa fa-soundcloud"></i> Sign in with SoundCloud</button>
     </div>
       <!-- <h2>{{ main.currentUser.username }}</h2> -->
-    </div>
-
-
-  <div ng-show="main.isLoggedIn()">
-    <nav class="navbar navbar-inverse">
-      <img ng-src="{{ main.currentUser.picture }}">
-      <button class="logout" ng-click="main.logout()"><i class="fa fa-sign-out fa-lg"></i> </button>
-    </nav>
   </div>
 
 <div ng-controller="UsersController as users">
-  <div class="tinder" class="card">
+  <div ng-show="main.isLoggedIn()">
+    <nav class="navbar navbar-inverse">
+      <img ng-src="{{ main.currentUser.picture }}"  ng-hide="users.profileIsShowing">
+      <button class="logout" ng-click="main.logout()"><i class="fa fa-sign-out fa-lg"></i> </button>
+      <a ng-click='users.showProfile(main.currentUser)'>profile</a>
+    </nav>
+  </div>
+
+  <div class="tinder" class="card"  ng-hide="users.profileIsShowing">
     <ul>
       <li class="animated" ng-class="user.swiped" ng-repeat="user in users.all" ng-swipe-right="users.swipeRight(user)" ng-swipe-left="users.swipeLeft(user)">
-          <img class="card-img-top" ng-src="{{ user.picture }}" alt="Card image cap">
-
-        <!-- <h1>{{ user.username }}</h1> -->
+        <img class="card-img-top" ng-src="{{ user.picture }}" alt="Card image cap">
+        <h5>{{ user.username }}</h5>
       </li>
+    </ul>
+  </div>
+
+  <div class="profile" ng-if="users.profileIsShowing">
+    <h1>PROFILE</h1>
+    <img ng-src="{{ main.currentUser.picture }}">
+    <ul>
+      <li ng-repeat="match in users.matchedUsers">{{match}} </li>
     </ul>
   </div>
 </div>

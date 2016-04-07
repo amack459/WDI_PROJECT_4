@@ -9,6 +9,7 @@ function MainController($auth, tokenService, $scope, $resource, API_URL) {
 
   this.isLoggedIn = function() {
     return !!tokenService.getToken();
+    // this.loggedInUser = User.get({ id: tokenService.getUser()._id });
   }
 
   this.currentUser = tokenService.getUser();

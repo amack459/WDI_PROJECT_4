@@ -30,8 +30,8 @@ function soundcloud(req, res) {
   })
   .then(function(response) {
     var track = response[0]
-    var profile = response[0].user
-
+    var profile = response[0].user;
+    console.log(profile);
     var trackIds = response.map(function(track) {
       return track.id;
     });
@@ -50,7 +50,9 @@ function soundcloud(req, res) {
             username: profile.username,
             picture: profile.avatar_url,
             // trackIds: // get the track ids
-            tracks: trackIds
+            tracks: trackIds,
+            url: profile.permalink_url,
+            playbackCount: track.playback_count
           });
 
         }

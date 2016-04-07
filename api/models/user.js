@@ -7,7 +7,9 @@ var userSchema = mongoose.Schema({
   matches: [{ type: mongoose.Schema.ObjectId }],
   website: String,
   picture: String,
-  soundcloudId: String
+  soundcloudId: String,
+  url: String,
+  playbackCount: Number
 });
 
 userSchema.pre('save', function(next) {

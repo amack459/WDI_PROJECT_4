@@ -23,12 +23,15 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
   var self = this;
   // this.newUser = {};
   this.currentIndex = 0;
-  this.loggedInUser = User.get({ id: tokenService.getUser()._id });
-
+  if (!!tokenService.getUser()) {
+    this.loggedInUser = User.get({ id: tokenService.getUser()._id });
+  }
+  this.matchedUsers = [];
 
   this.all = User.query(function(users) {
     playAudio();
   });
+
 
   function stopAudio() {
     $timeout.cancel(t);
@@ -39,6 +42,7 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
   function playAudio() {
 
     var index = (self.all.length - self.currentIndex-1);
+
     var trackSRCs = self.all[index].tracks.map(function(id) {
       console.log(self.all[index]);
       return SOUNDCLOUD_API_URL + '/tracks/' + id + '/stream?client_id=' + SOUNDCLOUD_API_KEY
@@ -73,6 +77,21 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
     this.currentIndex++;
     playAudio();
   };
+
+  this.profileIsShowing = false;
+  this.profileUser = {};
+
+  this.showProfile = function(user) {
+    this.profileIsShowing = true;
+    User.get({id: user._id}, function(user) {
+      this.profileUser = user;
+      user.matches.forEach(function(match) {
+        User.get({id: match}, function(user) {
+          self.matchedUsers.push(user);
+        })
+      })
+    });
+  }
 
   // this.addUser = function(user) {
   //   User.save(this.newUser).$promise.then(function() {

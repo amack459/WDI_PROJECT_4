@@ -12,10 +12,8 @@ function usersIndex(request, response) {
 // POST
 function usersCreate(request, response) {
   var user = new User(request.body);
-
   user.save(function(error) {
     if(error) response.status(500).json(error);
-
     response.status(201).json(user);
   });
 }
