@@ -90,11 +90,13 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
     this.profileIsShowing = true;
     User.get({id: user._id}, function(user) {
       this.profileUser = user;
-      user.matches.forEach(function(match) {
-        User.get({id: match}, function(user) {
-          self.matchedUsers.push(user);
-        })
-      })
+      if (user.matches != []) {
+        user.matches.forEach(function(match) {
+          User.get({id: match}, function(user) {
+            self.matchedUsers.push(user);
+          })
+        });
+      }
     });
   }
 

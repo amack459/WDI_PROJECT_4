@@ -36,6 +36,13 @@ body {
   margin: 10px 10px;
 }
 
+img.logo {
+  /*position: relative;*/
+  margin-right: calc(50vw - 30px) !important;
+  border: none;
+  border-radius: none;
+}
+
 .centered {
   position: absolute;
   left: 50%;
@@ -43,6 +50,10 @@ body {
   transform: translate(-50%, -50%);
   width: 415px;
   z-index: 2;
+}
+
+h3.logo{
+  margin-top: 10px;
 }
 
 h1 {
@@ -85,6 +96,36 @@ button.soundcloud {
 }
 
 
+.profile{
+  width: 100%;
+  height: 100vh;
+  background: #CCE8E7;
+}
+
+.profile ul {
+  width: 100%;
+  overflow-y: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.profile li{
+  display: inline-block;
+  list-style: none;
+  border-radius: 50%;
+}
+.profile img{
+  border-radius: 50%;
+  margin: 10px;
+  }
+
+  .profile li img {
+  width: 150px;
+  border-radius: 50%;
+}
 
 .vibes {
   position: absolute;
@@ -107,7 +148,7 @@ section{
   border-radius: 10px;
   /*overflow: hidden;*/
   position: relative;
-  border: 2px solid #333;
+  border: 2px solid white;
   margin-top: 0;
   background: #CCE8E7;
   list-style: none;
@@ -124,11 +165,11 @@ section{
 }
 
 .fa-heart{
-  color: red;
+  color: #FE8588;
 }
 
 .fa-trash-o{
-  color: brown;
+  color: #3B5251;
 }
 
 .vibes img {

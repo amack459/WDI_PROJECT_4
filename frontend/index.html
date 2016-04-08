@@ -37,9 +37,10 @@
 <div ng-controller="UsersController as users">
   <div ng-show="main.isLoggedIn()">
     <nav class="navbar navbar-inverse">
-      <img ng-src="{{ main.currentUser.picture }}"  ng-click='users.showProfile(main.currentUser)'>
+      <img ng-src="{{ main.currentUser.picture }}" ng-click='users.showProfile(main.currentUser)'>
       <button class="logout" ng-click="main.logout(); users.profileIsShowing = false"><i class="fa fa-sign-out fa-lg"></i> </button>
-      <a ng-click='users.profileIsShowing = false'>Studio Vibes</a>
+      <h3 class="logo" ng-click='users.profileIsShowing = false'>Studio Vibes </h3>
+      <!-- <img class="logo" src="css/images/music white.png" ng-click='users.profileIsShowing = false'> -->
     </nav>
   </div>
 
@@ -60,7 +61,7 @@
 
 
   <div class="profile" ng-show="users.profileIsShowing">
-    <h1>PROFILE</h1>
+    <h1> Profile </h1>
     <img ng-src="{{ main.currentUser.picture }}">
     <ul>
       <li ng-repeat="match in users.matchedUsers" ng-click="users.showMatch(match)">
