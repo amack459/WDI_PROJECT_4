@@ -87,6 +87,7 @@ function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_U
 
   this.showProfile = function(user) {
     console.log(user);
+    stopAudio();
     this.profileIsShowing = true;
     User.get({id: user._id}, function(user) {
       this.profileUser = user;
