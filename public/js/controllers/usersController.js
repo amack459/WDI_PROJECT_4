@@ -12,10 +12,10 @@ function SecureURL($sceDelegateProvider, SOUNDCLOUD_API_URL) {
 }
 
 
-UsersController.$inject = ['$window', '$timeout','$resource', 'API_URL', 'SOUNDCLOUD_API_URL', 'SOUNDCLOUD_API_KEY', 'tokenService'];
-function UsersController($window, $timeout, $resource, API_URL, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_KEY, tokenService) {
+UsersController.$inject = ['$window', '$timeout','$resource', 'SOUNDCLOUD_API_URL', 'SOUNDCLOUD_API_KEY', 'tokenService'];
+function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_KEY, tokenService) {
 
-  var User = $resource(API_URL + '/users/:id', { id: '@_id'}, { update: {method:'PUT'}});
+  var User = $resource('/users/:id', { id: '@_id'}, { update: {method:'PUT'}});
   var player = new Audio();
   player.autoplay = true;
   var t;

@@ -2,8 +2,8 @@ angular
   .module('studioVibes')
   .controller('MainController', MainController);
 
-MainController.$inject = ['$auth', 'tokenService', '$scope', '$resource', 'API_URL'];
-function MainController($auth, tokenService, $scope, $resource, API_URL) {
+MainController.$inject = ['$auth', 'tokenService', '$scope', '$resource'];
+function MainController($auth, tokenService, $scope, $resource) {
 
   var self = this;
 
