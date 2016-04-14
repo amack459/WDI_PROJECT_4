@@ -4,7 +4,8 @@
   "description": "A platform for musical collaboration without tons of spam",
   "main": "app.js",
   "scripts": {
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "start": "node app.js"
   },
   "author": "Acacia Mack",
   "license": "ISC",
