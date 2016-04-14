@@ -15,7 +15,7 @@ function SecureURL($sceDelegateProvider, SOUNDCLOUD_API_URL) {
 UsersController.$inject = ['$window', '$timeout','$resource', 'SOUNDCLOUD_API_URL', 'SOUNDCLOUD_API_KEY', 'tokenService'];
 function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_KEY, tokenService) {
 
-  var User = $resource('/users/:id', { id: '@_id'}, { update: {method:'PUT'}});
+  var User = $resource(API_URL + '/users/:id', { id: '@_id'}, { update: {method:'PUT'}});
   var player = new Audio();
   player.autoplay = true;
   var t;
@@ -100,36 +100,4 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
       }
     });
   }
-
-  // this.addUser = function(user) {
-  //   User.save(this.newUser).$promise.then(function() {
-  //     self.users.unshift(this.newUser);
-  //     self.user.swiped = false;
-  //
-  //   });
-  // };
-
-  // this.matches = function(user) {
-    // var index = (self.all.length - self.currentIndex-1);
-    // var matches = self.all[index].matches;
-    // var userId = self.all[index]._id;
-    // self.all[index].likes.map(function(index) {
-      // console.log(self.all[index].likes);
-      // console.log("+++++++++++++++++++++++++++++++++++++");
-
-  // compare current user's likes with other users' likes
-  // if your id is in their likes
-  // if their id is in your likes
-  // push ids into respective matches array
-  // });
-// };
-
-  // this.matches();
-
-  // this.updateUser = function(id) {
-  //   User.update({id: id}, {likes: this.likes}, function(user) {
-  //     // console.log(user);
-  //     // console.log("+++++++++++++++++++++++++++++++++++++");
-  //   })
-  // }
 };
