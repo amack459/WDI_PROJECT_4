@@ -12,10 +12,7 @@ mongoose.connect(config.databaseUrl);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors({
-  origin: config.appUrl,
-  credentials: true
-}));
+app.use(express.static(__dirname + '/public'));
 
 app.use('/', router);
 

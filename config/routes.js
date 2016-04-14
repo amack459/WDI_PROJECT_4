@@ -4,6 +4,10 @@ var authController = require('../controllers/authentication');
 
 router.post('/auth/soundcloud', authController.soundcloud);
 
+router.get('/', function(req, res) {
+  res.sendFile('../public/index.html');
+});
+
 // http://127.0.0.1:3000/users
 router.route('/users')
 

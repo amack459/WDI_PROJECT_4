@@ -1,6 +1,6 @@
 angular
   .module('studioVibes', ['satellizer', 'angular-jwt', 'ngResource', 'ngTouch'])
-  .constant('API_URL', 'http://localhost:3000')
+  .constant('API_URL', 'http://localhost:8000')
   .constant('SOUNDCLOUD_API_URL', 'https://api.soundcloud.com')
   .config(oauthConfig)
   .config(SecureURL);
