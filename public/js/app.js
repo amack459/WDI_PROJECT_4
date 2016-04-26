@@ -11,7 +11,7 @@ function oauthConfig($authProvider, SOUNDCLOUD_API_KEY) {
     url: '/auth/soundcloud',
     clientId: SOUNDCLOUD_API_KEY,
     authorizationEndpoint: 'https://soundcloud.com/connect',
-    redirectUri: 'https://studiovibes.herokuapp.com',
+    redirectUri: location.origin,
     scope: 'non-expiring'
   });
   $authProvider.tokenPrefix = null;
