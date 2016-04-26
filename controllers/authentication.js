@@ -9,7 +9,7 @@ function soundcloud(req, res) {
   var params = {
     client_id: process.env.SOUNDCLOUD_API_KEY,
     client_secret: process.env.SOUNDCLOUD_API_SECRET,
-    redirect_uri: req.body.redirectUri,
+    redirect_uri: redirectUri,
     grant_type: 'authorization_code',
     code: req.body.code
   }
