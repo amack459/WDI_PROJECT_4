@@ -19,7 +19,7 @@ function MainController($auth, tokenService, $scope, $resource) {
     $auth.authenticate(provider)
       .then(function() {
         self.currentUser = tokenService.getUser();
-        console.log(self.currentUser)
+        // console.log(self.currentUser)
       });
   }
 
