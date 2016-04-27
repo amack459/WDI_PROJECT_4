@@ -60,6 +60,7 @@ function soundcloud(req, res) {
             city: profile.city,
             trackCount: profile.track_count, 
             playlistCount: profile.playlist_count
+            playbackCount: tracks[0].playback_count
           });
         }
         // either way, save the user record

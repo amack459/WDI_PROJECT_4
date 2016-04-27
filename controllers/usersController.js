@@ -29,6 +29,9 @@ function usersUpdate(request, response) {
     user.website = request.body.website;
     user.picture = request.body.picture;
     user.soundcloudId = request.body.soundcloudId;
+    user.city = request.body.city;
+    user.country = request.body.country;
+    user.url = request.body.url;
 
     user.save(function(err, user) {
       if(err) response.status(500).json(err);
