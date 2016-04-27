@@ -85,6 +85,11 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
   this.profileIsShowing = false;
   this.profileUser = {};
 
+  this.hideProfile = function(user) {
+    stopAudio()
+    profileIsShowing = false;
+  }
+
   this.showProfile = function(user) {
     console.log(user);
     stopAudio();
