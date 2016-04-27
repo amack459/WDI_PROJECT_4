@@ -16,9 +16,6 @@ UsersController.$inject = ['$window', '$timeout','$resource', 'tokenService', 'a
 function UsersController($window, $timeout, $resource, tokenService, audioService)  {
 
   var User = $resource('/users/:id', { id: '@_id'}, { update: {method:'PUT'}});
-  var player = new Audio();
-  player.autoplay = true;
-  var t;
 
   var self = this;
   // this.newUser = {};
