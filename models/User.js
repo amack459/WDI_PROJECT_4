@@ -9,6 +9,10 @@ var userSchema = mongoose.Schema({
   picture: String,
   soundcloudId: String,
   url: String,
+  country: String,
+  city: String,
+  trackCount: Number,
+  playlistCount: Number,
   playbackCount: Number
 });
 

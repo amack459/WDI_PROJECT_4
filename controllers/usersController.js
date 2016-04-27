@@ -4,7 +4,6 @@ var User = require('../models/User');
 function usersIndex(request, response) {
   User.find(function(error, users) {
     if(error) response.status(404).json(error);
-
     response.status(200).json(users);
   }).select('-__v');
 }

@@ -55,13 +55,16 @@ function soundcloud(req, res) {
           user = new User({
             soundcloudId: profile.id,
             username: profile.username,
-            picture: profile.avatar_url
+            picture: profile.avatar_url,
+            country: profile.country, 
+            city: profile.city,
+            trackCount: profile.track_count, 
+            playlistCount: profile.playlist_count
           });
         }
         // either way, save the user record
         return user.save();
 
-        console.log(user);
       });
   })
   .then(function(user) {

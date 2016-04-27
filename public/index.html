@@ -20,28 +20,27 @@
   <script src="/js/controllers/usersController.js"></script>
   <script src="/js/services/oauthKey.js"></script>
   <script src="/js/services/token.js"></script>
-  <script src="/js/services/audio.js"></script>
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="/js/vendor/animate.css/animate.min.css">
 </head>
 <body ng-controller="MainController as main">
-  <div class="centered" ng-show="!main.isLoggedIn()">
+  <div class="centered" ng-show="!main.isLoggedIn();">
     <div ng-hide="main.isLoggedIn()">
       <h1>Studio Vibes</h1>
       <h3>Bringing vibes to the studio</h3>
       <button class="soundcloud" ng-click="main.authenticate('soundcloud')"><i class="fa fa-soundcloud"></i> Sign in with SoundCloud</button>
     </div>
-      <!-- <h2>{{ main.currentUser.username }}</h2> -->
+  
   </div>
 
 <div ng-controller="UsersController as users">
   <div ng-show="main.isLoggedIn()">
+  <!-- navbar -->
     <nav class="navbar navbar-inverse">
       <img ng-src="{{ main.currentUser.picture }}" ng-click='users.showProfile(main.currentUser)'>
       <button class="logout" ng-click="main.logout(); users.hideProfile(main.currentUser)"><i class="fa fa-sign-out fa-lg"></i> </button>
       <h3 class="logo" ng-click='users.profileIsShowing = false'>Studio Vibes </h3>
-      <!-- <img class="logo" src="css/images/music white.png" ng-click='users.profileIsShowing = false'> -->
     </nav>
   </div>
 

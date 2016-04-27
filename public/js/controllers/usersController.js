@@ -12,66 +12,65 @@ function SecureURL($sceDelegateProvider, SOUNDCLOUD_API_URL) {
 }
 
 
-UsersController.$inject = ['$window', '$timeout','$resource', 'tokenService', 'audioService'];
-function UsersController($window, $timeout, $resource, tokenService, audioService)  {
+UsersController.$inject = ['$window', '$timeout','$resource', 'SOUNDCLOUD_API_URL', 'SOUNDCLOUD_API_KEY', 'tokenService'];
+function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_KEY, tokenService) {
 
   var User = $resource('/users/:id', { id: '@_id'}, { update: {method:'PUT'}});
+  var player = new Audio();
+  player.autoplay = true;
+  var t;
 
   var self = this;
   // this.newUser = {};
   this.currentIndex = 0;
 
+  // User.get({ id: tokenService.getUser()._id}, function(user) {
+  //   self.loggedInUser = user;
+  // });
 
   if (!!tokenService.getUser()) {
     self.loggedInUser = User.get({ id: tokenService.getUser()._id})
   }
 
+  this.all = User.query(function(users) {
+      console.log("music is playing")
+      playAudio();
+  });
+
+
+
   this.matchedUsers = [];
 
-  // this.all = User.query(function(users) {
-  //     playAudio();   
-  // });
+  // if (!!tokenService.getToken()) {
+  //   this.all = User.query(function(users) {
+  //     playAudio();
+  //   });
+  // } else {
+  //   stopAudio();
+  // }
 
-  this.all = null;
 
-  this.getAll = function(){
-    User.query().$promise.then(function(users) {
-      console.log("PROMISE LAUNCHED");
-      self.all = users;
-      audioService.playAudio();   
-    });
+  function stopAudio() {
+    $timeout.cancel(t);
+    player.pause();
+    player.currentTime = 0;
   }
 
-  self.getAll();
+  function playAudio() {
+    var index = (self.all.length - self.currentIndex-1);
 
-
-  // function stopAudio() {
-  //   $timeout.cancel(t);
-  //   player.pause();
-  //   player.currentTime = 0;
-  // }
-
-  // function playAudio() {
-  //   if (!!tokenService.getToken()) {
-  //     console.log("Token present, playing audio");
-  //     var index = (self.all.length - self.currentIndex-1);
-
-  //     var trackSRCs = self.all[index].tracks.map(function(id) {
-  //       // console.log(self.all[index]);
-  //       return SOUNDCLOUD_API_URL + '/tracks/' + id + '/stream?client_id=' + SOUNDCLOUD_API_KEY
-  //     });
-  //     player.src = trackSRCs[0];
-  //     t = $timeout(function() {
-  //       stopAudio();
-  //     }, 15 * 1000);
-  //   }
-  //   else {
-  //     console.log("No token present, not playing audio");
-  //   }
-  // }
+    var trackSRCs = self.all[index].tracks.map(function(id) {
+      // console.log(self.all[index]);
+      return SOUNDCLOUD_API_URL + '/tracks/' + id + '/stream?client_id=' + SOUNDCLOUD_API_KEY
+    });
+    player.src = trackSRCs[0];
+    t = $timeout(function() {
+      stopAudio();
+    }, 15 * 1000);
+  }
 
   this.swipeRight = function(user) {
-    audioService.stopAudio();
+    stopAudio();
     var index   = (self.all.length - self.currentIndex-1);
     var userId  = self.all[index]._id;
     user.swiped = "fadeOutRightBig";
@@ -84,22 +83,23 @@ function UsersController($window, $timeout, $resource, tokenService, audioServic
       });
     })
     self.currentIndex++;
-    audioService.playAudio();
+    playAudio();
   };
 
   this.swipeLeft = function(user) {
-    audioService.stopAudio();
+    stopAudio();
     user.swiped = "fadeOutLeftBig";
     this.currentIndex++;
-    audioService.playAudio();
+    playAudio();
   };
 
   this.profileIsShowing = false;
   this.profileUser = {};
 
   this.hideProfile = function(user) {
-    stopAudio()
-    profileIsShowing = false;
+    stopAudio();
+    this.profileIsShowing = false;
+
   }
 
   this.showProfile = function(user) {
