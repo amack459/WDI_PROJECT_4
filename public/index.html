@@ -38,7 +38,7 @@
   <div ng-show="main.isLoggedIn()">
     <nav class="navbar navbar-inverse">
       <img ng-src="{{ main.currentUser.picture }}" ng-click='users.showProfile(main.currentUser)'>
-      <button class="logout" ng-click="main.logout(); users.profileIsShowing = false"><i class="fa fa-sign-out fa-lg"></i> </button>
+      <button class="logout" ng-click="main.logout(); users.profileIsShowing = false; users.stopAudio()"><i class="fa fa-sign-out fa-lg"></i> </button>
       <h3 class="logo" ng-click='users.profileIsShowing = false'>Studio Vibes </h3>
       <!-- <img class="logo" src="css/images/music white.png" ng-click='users.profileIsShowing = false'> -->
     </nav>
