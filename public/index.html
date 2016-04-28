@@ -61,13 +61,13 @@
 
 
   <div class="profile" ng-show="users.profileIsShowing">
-    <h1> Matches </h1>
+    <h1> Your Matches </h1>
     <img ng-src="{{ main.currentUser.picture }}">
     <ul>
       <li ng-repeat="match in users.matchedUsers">
         <img ng-src="{{match.picture}}">
         <div class="matches">
-          {{ match.country }} <br> {{ match.city }} <br> Tracks: {{ match.trackCount }} <br> Playlists: {{ match.playlistCount }} <br>
+          {{ match.country }} <br> {{ match.city }} <br> Tracks:  {{ match.trackCount }} <br> Playlists:  {{ match.playlistCount }} <br>
           <a href="{{ match.url }}"> visit {{ match.username }}'s soundcloud </a>
         </div>
       </li>
