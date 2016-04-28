@@ -59,7 +59,7 @@ function soundcloud(req, res) {
             country: profile.country, 
             city: profile.city,
             trackCount: profile.track_count, 
-            playlistCount: profile.playlist_count
+            playlistCount: profile.playlist_count,
             playbackCount: tracks[0].playback_count
           });
         }

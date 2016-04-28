@@ -23,7 +23,7 @@ userSchema.pre('save', function(next) {
 
   this.constructor.find({ _id: { $in: this.likes }, likes: this._id }, function(err, users) {
     if(err) return next(err);
-    self.matches = users.map(function(user) { return user._id });
+    self.matches = users.map(function(user) { return user._id, user.username });
     next();
   });
 });

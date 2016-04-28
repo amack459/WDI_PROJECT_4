@@ -21,12 +21,9 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
   var t;
 
   var self = this;
-  // this.newUser = {};
   this.currentIndex = 0;
 
-  // User.get({ id: tokenService.getUser()._id}, function(user) {
-  //   self.loggedInUser = user;
-  // });
+
 
   if (!!tokenService.getUser()) {
     self.loggedInUser = User.get({ id: tokenService.getUser()._id})
@@ -40,6 +37,10 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
 
 
   this.matchedUsers = [];
+
+
+
+
 
   // if (!!tokenService.getToken()) {
   //   this.all = User.query(function(users) {
@@ -101,6 +102,7 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
     this.profileIsShowing = false;
 
   }
+
 
   this.showProfile = function(user) {
     console.log(user);
