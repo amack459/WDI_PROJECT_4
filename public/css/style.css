@@ -127,6 +127,11 @@ button.soundcloud {
   border-radius: 50%;
 }
 
+div.matches {
+  color: #63A2A0;
+  font-weight: bold;
+}
+
 .vibes {
   position: absolute;
   left: 50%;

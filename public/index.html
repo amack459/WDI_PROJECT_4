@@ -67,9 +67,8 @@
       <li ng-repeat="match in users.matchedUsers">
         <img ng-src="{{match.picture}}">
         <div class="matches">
+          {{ match.country }} <br> {{ match.city }} <br> Tracks: {{ match.trackCount }} <br> Playlists: {{ match.playlistCount }} <br>
           <a href="{{ match.url }}"> visit {{ match.username }}'s soundcloud </a>
-
-          <br> {{ match.country }} <br> {{ match.city }} <br> Tracks: {{ match.trackCount }} <br> Playlists: {{ match.playlistCount }} 
         </div>
       </li>
     </ul>
