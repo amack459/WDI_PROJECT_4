@@ -63,7 +63,7 @@
   <div class="profile" ng-show="users.profileIsShowing">
     <h1> Your Matches </h1>
     <img ng-src="{{ main.currentUser.picture }}">
-    <ul>
+    <ul class="scroll">
       <li ng-repeat="match in users.matchedUsers">
         <img ng-src="{{match.picture}}">
         <div class="matches">
