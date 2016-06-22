@@ -7,7 +7,7 @@ body {
   letter-spacing: -2px;
 
   -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
 }
 .navbar-inverse{
   background: #63A2A0;
@@ -102,7 +102,7 @@ button.soundcloud {
   background: #CCE8E7;
 }
 
-.profile ul{
+.profile ul {
   width: 100%;
   overflow-y: hidden;
   white-space: nowrap;
@@ -112,28 +112,22 @@ button.soundcloud {
   border-bottom: 2px solid white;
 }
 
-.profile li.animated{
+.profile li{
   display: inline-block;
   list-style: none;
   border-radius: 50%;
 }
-
 .profile img{
   border-radius: 50%;
   margin: 10px;
-}
+  }
 
-.profile li img {
+  .profile li img {
   width: 150px;
   border-radius: 50%;
 }
 
-div.matches {
-  color: #63A2A0;
-  font-weight: bold;
-}
-
-div.vibes {
+.vibes div.vibes {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -142,7 +136,7 @@ div.vibes {
 
 section{
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: #CCE8E7;
 }
 
@@ -152,7 +146,7 @@ section{
   width: 259px;
   height: 400px;
   border-radius: 10px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   position: relative;
   border: 2px solid white;
   margin-top: 0;
