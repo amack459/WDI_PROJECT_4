@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 });
 
 // http://127.0.0.1:3000/users
-router.route('/') //users
+router.route('/users') 
 
   //GET all users
   .get(usersController.index)
