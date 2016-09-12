@@ -30,9 +30,10 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
   }
 
   this.all = User.query(function(users) {
-      console.log("music is playing")
+      console.log("all users loaded")
       playAudio();
-  });
+  }); 
+
 
 
 
@@ -40,7 +41,8 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
 
 
 
-
+//music only plays once profile is showing. Not on app load.
+//go back to beginning once user reaches the end.
 
   // if (!!tokenService.getToken()) {
   //   this.all = User.query(function(users) {
@@ -58,6 +60,7 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
   }
 
   function playAudio() {
+    console.log("audio playing");
     var index = (self.all.length - self.currentIndex-1);
 
     var trackSRCs = self.all[index].tracks.map(function(id) {
@@ -100,7 +103,6 @@ function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUND
   this.hideProfile = function(user) {
     stopAudio();
     this.profileIsShowing = false;
-
   }
 
 
