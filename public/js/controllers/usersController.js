@@ -4,7 +4,7 @@ angular
   .config(SecureURL);
 
 SecureURL.$inject = ['$sceDelegateProvider', 'SOUNDCLOUD_API_URL'];
-function SecureURL($sceDelegateProvider, SOUNDCLOUD_API_URL) {
+  function SecureURL($sceDelegateProvider, SOUNDCLOUD_API_URL) {
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
     SOUNDCLOUD_API_URL + '/**'
@@ -13,7 +13,7 @@ function SecureURL($sceDelegateProvider, SOUNDCLOUD_API_URL) {
 
 
 UsersController.$inject = ['$window', '$timeout','$resource', 'SOUNDCLOUD_API_URL', 'SOUNDCLOUD_API_KEY', 'tokenService'];
-function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_KEY, tokenService) {
+  function UsersController($window, $timeout, $resource, SOUNDCLOUD_API_URL, SOUNDCLOUD_API_KEY, tokenService) {
 
   var User = $resource('/users/:id', { id: '@_id'}, { update: {method:'PUT'}});
   var player = new Audio();

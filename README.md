@@ -6,4 +6,12 @@ In short, this is a Tinder for musicians in order to find other artists and/or p
 The website is: https://studiovibes.herokuapp.com/
 
 
-As this is an ongoing project, it may have to be run locally on localhost:8000 after express is listening on port 8000 (run nodemon in the terminal to make this happen) and mongo is running (mongod/sudo mongod in the terminal).
+Unfortunately, Soundcloud changed the way they run their API while I was in development mode. So, this project can only be run locally. In order to do this, follow the steps below:
+
+1. Fork repo
+2. Once you've `npm intall mongod`, run `mongod`
+3. Once you've `npm intall nodemon`, run `nodemon`
+4. Open localhost:8000 in your browser after it says `listening on port 8000` in the terminal. 
+
+
+it may have to be run locally on localhost:8000 after express is listening on port 8000 (run nodemon in the terminal to make this happen) and mongo is running (mongod/sudo mongod in the terminal).
